@@ -1,1 +1,11 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10561565&assignment_repo_type=AssignmentRepo)
+### Conventional Commits
+- feat --> adding a new function or feature
+- fix --> when fixing a bug
+- refactor --> when refactoring functions and variables
+- build --> when new package is installed
+- docs --> when README is updated
+
+Example:
+```ps1
+git commit -m "(refactor): more conventional namning on function"
+```
