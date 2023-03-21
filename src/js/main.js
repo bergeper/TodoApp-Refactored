@@ -1,38 +1,39 @@
-import { Todo } from "./models/todo";
+import '../scss/main.scss';
+import { Todo } from './models/todo';
 
 let todoList = [];
 // waiting for the whole page to load before executing
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   // Looping the TodoList from LS to create objects with the class Todo
   // Tack för att du påminde mig om map-loopen :)
-  todoList = JSON.parse(localStorage.getItem("TodoList")).map((todo) => {
+  todoList = JSON.parse(localStorage.getItem('TodoList')).map(todo => {
     return new Todo(todo.task, todo.completed);
   });
   createTodoList();
 });
 
 // Getting the article tag.
-const todoListContainer = document.getElementById("todoListDisplay");
+const todoListContainer = document.getElementById('todoListDisplay');
 
 // input and button
-const inputTask = document.getElementById("task");
-const buttonTask = document.getElementById("addTask");
-buttonTask.addEventListener("click", createTodo);
+const inputTask = document.getElementById('task');
+const buttonTask = document.getElementById('addTask');
+buttonTask.addEventListener('click', createTodo);
 
 // sort button
-const buttonSort = document.getElementById("sortTask");
-buttonSort.addEventListener("click", sortTodos);
+const buttonSort = document.getElementById('sortTask');
+buttonSort.addEventListener('click', sortTodos);
 
 // Create a todo
 function createTodo() {
   const newTodo = new Todo(inputTask.value, false);
-  if (inputTask.value === "") {
-    alert("You need to write something");
+  if (inputTask.value === '') {
+    alert('You need to write something');
   } else {
     todoList.push(newTodo);
-    localStorage.setItem("TodoList", JSON.stringify(todoList));
-    inputTask.value = "";
+    localStorage.setItem('TodoList', JSON.stringify(todoList));
+    inputTask.value = '';
     createTodoList(newTodo);
   }
 }
@@ -46,54 +47,54 @@ function sortTodos() {
 // Adding objects to the list
 function createTodoList() {
   // clear when adding new item to list
-  todoListContainer.innerHTML = "";
+  todoListContainer.innerHTML = '';
   for (let i = 0; i < todoList.length; i++) {
     // create elements too display the list.
-    const listItemContainer = document.createElement("div");
-    listItemContainer.classList.add("card__task");
+    const listItemContainer = document.createElement('div');
+    listItemContainer.classList.add('card__task');
 
     // task-name
-    const listItemTask = document.createElement("p");
-    listItemTask.classList.add("card__task--name");
+    const listItemTask = document.createElement('p');
+    listItemTask.classList.add('card__task--name');
     // task-done
-    const listItemRemove = document.createElement("span");
-    listItemRemove.classList.add("card__task--remove");
+    const listItemRemove = document.createElement('span');
+    listItemRemove.classList.add('card__task--remove');
 
     // task-checked
-    const listItemChecked = document.createElement("input");
-    listItemChecked.classList.add("card__task--check");
-    listItemChecked.type = "checkbox";
+    const listItemChecked = document.createElement('input');
+    listItemChecked.classList.add('card__task--check');
+    listItemChecked.type = 'checkbox';
     listItemChecked.checked = todoList[i].completed;
 
     // To mark object as done.
-    listItemChecked.addEventListener("change", () => {
+    listItemChecked.addEventListener('change', () => {
       if (listItemChecked.checked === true) {
         todoList[i].completed = true;
-        listItemContainer.classList.add("card__task--done");
+        listItemContainer.classList.add('card__task--done');
         // Just to see that the object actually go true in the list
         console.log(todoList);
       } else {
         todoList[i].completed = false;
-        listItemContainer.classList.remove("class", "card__task--done");
+        listItemContainer.classList.remove('class', 'card__task--done');
         // Just to see that the object actually go false in the list
         console.log(todoList);
       }
-      localStorage.setItem("TodoList", JSON.stringify(todoList));
+      localStorage.setItem('TodoList', JSON.stringify(todoList));
     });
 
     // Detta känns som en riktigt ful lösning
     // men det fungerar.....
     // To keep the CSS even if you reload or close the page.
     if (listItemChecked.checked === true) {
-      listItemContainer.classList.add("card__task--done");
+      listItemContainer.classList.add('card__task--done');
     } else {
-      listItemContainer.classList.remove("class", "card__task--done");
+      listItemContainer.classList.remove('class', 'card__task--done');
     }
 
     // remove item on position
-    listItemRemove.addEventListener("click", () => {
+    listItemRemove.addEventListener('click', () => {
       todoList.splice([i], 1);
-      localStorage.setItem("TodoList", JSON.stringify(todoList));
+      localStorage.setItem('TodoList', JSON.stringify(todoList));
       console.log(todoList);
       createTodoList();
     });
