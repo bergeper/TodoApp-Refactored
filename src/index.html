@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <link href="scss/main.scss" rel="stylesheet" />
+    <script defer src="js/main.js" type="module"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <title>Todo</title>
+  </head>
+  <body>
+    <main class="wrapper">
+      <div class="container">
+        <section class="content">
+          <h2 class="header__heading">Todo-app</h2>
+          <article class="header">
+            <form>
+              <h4 class="header__heading">Add a Task</h4>
+              <input
+                type="text"
+                placeholder="Your task..."
+                id="task"
+                class="header__input"
+              />
+              <button id="addTask" class="header__btn">Add Task</button>
+            </form>
+          </article>
+          <h4 class="header__heading">What needs to be done</h4>
+          <article id="todoListDisplay" class="card"></article>
+          <button id="sortTask" class="sort__btn">Sort it up!</button>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
