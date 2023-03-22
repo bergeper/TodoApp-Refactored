@@ -70,7 +70,7 @@ function createTodoList(): void {
 
     // To mark object as done.
     listItemChecked.addEventListener('change', () => {
-      if (listItemChecked.checked === true) {
+      if (listItemChecked.checked) {
         todoList[i].completed = true;
         listItemContainer.classList.add('card__task--done');
         // Just to see that the object actually go true in the list
@@ -87,7 +87,7 @@ function createTodoList(): void {
     // Detta känns som en riktigt ful lösning
     // men det fungerar.....
     // To keep the CSS even if you reload or close the page.
-    if (listItemChecked.checked === true) {
+    if (listItemChecked.checked) {
       listItemContainer.classList.add('card__task--done');
     } else {
       listItemContainer.classList.remove('class', 'card__task--done');
@@ -95,7 +95,7 @@ function createTodoList(): void {
 
     // remove item on position
     listItemRemove.addEventListener('click', () => {
-      todoList.splice([i], 1);
+      todoList.splice(i, 1);
       localStorage.setItem('TodoList', JSON.stringify(todoList));
       console.log(todoList);
       createTodoList();
