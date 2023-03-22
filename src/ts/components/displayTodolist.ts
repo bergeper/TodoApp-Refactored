@@ -1,11 +1,16 @@
 import type { Todo } from '../models/todo';
 import { checkTodoDone } from './checkTodo';
 import { removeTodo } from './removeTodo';
+import { sortTodos } from './sortTodolist';
 
 const todoListContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
-
 export function createTodoList(todoList: Todo[]): void {
+  const buttonSort: HTMLButtonElement = document.createElement('button');
+  buttonSort.classList.add('sort__btn');
+  buttonSort.innerHTML = 'Sort it up!';
+
   todoListContainer.innerHTML = '';
+
   for (let i = 0; i < todoList.length; i++) {
     const listItemContainer: HTMLDivElement = document.createElement('div');
     listItemContainer.classList.add('card__task');
@@ -43,4 +48,10 @@ export function createTodoList(todoList: Todo[]): void {
     listItemContainer.appendChild(listItemRemove);
     todoListContainer.appendChild(listItemContainer);
   }
+
+  buttonSort.addEventListener('click', () => {
+    sortTodos(todoList);
+  });
+
+  todoListContainer.appendChild(buttonSort);
 }
