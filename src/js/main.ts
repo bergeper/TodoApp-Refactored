@@ -1,7 +1,7 @@
 import '../scss/main.scss';
 import { Todo } from './models/todo';
 
-let todoList: Todo[] = [];
+const todoList: Todo[] = [];
 // waiting for the whole page to load before executing
 
 window.addEventListener('load', () => {
@@ -29,14 +29,14 @@ buttonSort.addEventListener('click', sortTodos);
 
 // Create a todo
 function createTodo(): void {
-  const newTodo: Todo = new Todo(inputTask.value, false);
+  const newTodo = new Todo(inputTask.value, false);
   if (inputTask.value === '') {
     alert('You need to write something');
   } else {
     todoList.push(newTodo);
     localStorage.setItem('TodoList', JSON.stringify(todoList));
     inputTask.value = '';
-    createTodoList(newTodo);
+    createTodoList();
   }
 }
 
