@@ -1,33 +1,35 @@
 import '../scss/main.scss';
 import { Todo } from './models/todo';
 
-let todoList = [];
+let todoList: Todo[] = [];
 // waiting for the whole page to load before executing
 
 window.addEventListener('load', () => {
   // Looping the TodoList from LS to create objects with the class Todo
   // Tack för att du påminde mig om map-loopen :)
+  /*
   todoList = JSON.parse(localStorage.getItem('TodoList')).map(todo => {
     return new Todo(todo.task, todo.completed);
   });
+  */
   createTodoList();
 });
 
 // Getting the article tag.
-const todoListContainer = document.getElementById('todoListDisplay');
+const todoListContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
 
 // input and button
-const inputTask = document.getElementById('task');
-const buttonTask = document.getElementById('addTask');
+const inputTask = document.getElementById('task') as HTMLInputElement;
+const buttonTask = document.getElementById('addTask') as HTMLButtonElement;
 buttonTask.addEventListener('click', createTodo);
 
 // sort button
-const buttonSort = document.getElementById('sortTask');
+const buttonSort = document.getElementById('sortTask') as HTMLButtonElement;
 buttonSort.addEventListener('click', sortTodos);
 
 // Create a todo
-function createTodo() {
-  const newTodo = new Todo(inputTask.value, false);
+function createTodo(): void {
+  const newTodo: Todo = new Todo(inputTask.value, false);
   if (inputTask.value === '') {
     alert('You need to write something');
   } else {
@@ -39,13 +41,13 @@ function createTodo() {
 }
 
 // sorts based on a boolean in the property completed.
-function sortTodos() {
+function sortTodos(): void {
   todoList.sort((a, b) => (a.completed > b.completed ? 1 : -1));
   createTodoList();
 }
 
 // Adding objects to the list
-function createTodoList() {
+function createTodoList(): void {
   // clear when adding new item to list
   todoListContainer.innerHTML = '';
   for (let i = 0; i < todoList.length; i++) {
