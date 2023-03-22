@@ -25,15 +25,15 @@ export function createTodoList(todoList: Todo[]): void {
       checkTodoDone(listItemContainer, listItemChecked, todoList, i);
     });
 
+    listItemRemove.addEventListener('click', () => {
+      removeTodo(todoList, i);
+    });
+
     if (listItemChecked.checked) {
       listItemContainer.classList.add('card__task--done');
     } else {
       listItemContainer.classList.remove('class', 'card__task--done');
     }
-
-    listItemRemove.addEventListener('click', () => {
-      removeTodo(todoList, i);
-    });
 
     listItemRemove.innerHTML = `<i class="bi bi-x-square-fill"></i>`;
     listItemTask.innerText = todoList[i].task;
