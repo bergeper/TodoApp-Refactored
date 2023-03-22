@@ -3,14 +3,7 @@ import { getTodosFromLS } from './helpers/localStorage';
 import { Todo } from './models/todo';
 
 let todoList: Todo[] = [];
-// waiting for the whole page to load before executing
-
-window.addEventListener('load', () => {
-  // Looping the TodoList from LS to create objects with the class Todo
-  // Tack för att du påminde mig om map-loopen :)
-  todoList = getTodosFromLS();
-  createTodoList();
-});
+todoList = getTodosFromLS();
 
 // Getting the article tag.
 const todoListContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
@@ -78,7 +71,7 @@ function createTodoList(): void {
         // Just to see that the object actually go false in the list
         console.log(todoList);
       }
-      localStorage.setItem('TodoList', JSON.stringify(todoList));
+      localStorage.setItem('Todos', JSON.stringify(todoList));
     });
 
     // Detta känns som en riktigt ful lösning
@@ -112,3 +105,5 @@ function createTodoList(): void {
   // just to see what happends
   console.log(todoList);
 }
+
+createTodoList();
