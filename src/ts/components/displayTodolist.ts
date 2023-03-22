@@ -1,4 +1,5 @@
 import type { Todo } from '../models/todo';
+import { removeTodo } from './removeTodo';
 
 const todoListContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
 
@@ -49,14 +50,12 @@ export function createTodoList(todoList: Todo[]): void {
 
     // remove item on position
     listItemRemove.addEventListener('click', () => {
-      todoList.splice(i, 1);
-      localStorage.setItem('Todos', JSON.stringify(todoList));
-      createTodoList(todoList);
+      removeTodo(todoList, i);
     });
 
     // what each element should display.
     listItemRemove.innerHTML = `<i class="bi bi-x-square-fill"></i>`;
-    listItemTask.innerText += todoList[i].task;
+    listItemTask.innerText = todoList[i].task;
 
     // appended all the elements in the right order.
     listItemContainer.appendChild(listItemChecked);
