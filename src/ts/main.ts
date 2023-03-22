@@ -1,17 +1,14 @@
 import '../scss/main.scss';
+import { getTodosFromLS } from './helpers/localStorage';
 import { Todo } from './models/todo';
 
-const todoList: Todo[] = [];
+let todoList: Todo[] = [];
 // waiting for the whole page to load before executing
 
 window.addEventListener('load', () => {
   // Looping the TodoList from LS to create objects with the class Todo
   // Tack för att du påminde mig om map-loopen :)
-  /*
-  todoList = JSON.parse(localStorage.getItem('TodoList')).map(todo => {
-    return new Todo(todo.task, todo.completed);
-  });
-  */
+  todoList = getTodosFromLS();
   createTodoList();
 });
 
@@ -34,7 +31,7 @@ function createTodo(): void {
     alert('You need to write something');
   } else {
     todoList.push(newTodo);
-    localStorage.setItem('TodoList', JSON.stringify(todoList));
+    localStorage.setItem('Todos', JSON.stringify(todoList));
     inputTask.value = '';
     createTodoList();
   }
@@ -96,7 +93,7 @@ function createTodoList(): void {
     // remove item on position
     listItemRemove.addEventListener('click', () => {
       todoList.splice(i, 1);
-      localStorage.setItem('TodoList', JSON.stringify(todoList));
+      localStorage.setItem('Todos', JSON.stringify(todoList));
       console.log(todoList);
       createTodoList();
     });
