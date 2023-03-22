@@ -1,6 +1,6 @@
 // class for each object in list
 export class Todo {
-  constructor(task, completed) {
+  constructor(public task: string, public completed: boolean) {
     this.task = task;
     this.completed = completed;
   }
