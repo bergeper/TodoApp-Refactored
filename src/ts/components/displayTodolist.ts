@@ -1,7 +1,7 @@
 import type { Todo } from '../models/todo';
 import { checkTodoDone } from './checkTodo';
 import { removeTodo } from './removeTodo';
-import { sortTodos } from './sortTodolist';
+import { sortTodos } from './sortTodos';
 
 const todoContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
 export function createTodoList(todos: Todo[]): void {
