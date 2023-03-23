@@ -1,6 +1,6 @@
 import { getTodosFromLS } from '../helpers/localStorage';
 import { Todo } from '../models/todo';
-import { createTodoList } from './displayTodolist';
+import { createTodoList } from './displayTodos';
 
 let todos: Todo[] = [];
 todos = getTodosFromLS();

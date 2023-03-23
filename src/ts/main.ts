@@ -1,6 +1,6 @@
 import '../scss/main.scss';
 import { createTodoInput } from './components/createTodo';
-import { createTodoList } from './components/displayTodolist';
+import { displayTodos } from './components/displayTodos';
 import { getTodosFromLS } from './helpers/localStorage';
 import type { Todo } from './models/todo';
 
@@ -9,7 +9,7 @@ todos = getTodosFromLS();
 
 function runApp(): void {
   createTodoInput();
-  createTodoList(todos);
+  displayTodos(todos);
 }
 
 runApp();

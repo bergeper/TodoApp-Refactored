@@ -4,7 +4,7 @@ import { removeTodo } from './removeTodo';
 import { sortTodos } from './sortTodos';
 
 const todoContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
-export function createTodoList(todos: Todo[]): void {
+export function displayTodos(todos: Todo[]): void {
   const buttonSort: HTMLButtonElement = document.createElement('button');
   buttonSort.classList.add('sort__btn');
   buttonSort.innerHTML = 'Sort it up!';

@@ -1,7 +1,7 @@
 import type { Todo } from '../models/todo';
-import { createTodoList } from './displayTodolist';
+import { displayTodos } from './displayTodos';
 
 export function sortTodos(todos: Todo[]): void {
   todos.sort((a, b) => (a.completed > b.completed ? 1 : -1));
-  createTodoList(todos);
+  displayTodos(todos);
 }

@@ -1,5 +1,5 @@
 import type { Todo } from '../models/todo';
-import { createTodoList } from './displayTodolist';
+import { createTodoList } from './displayTodos';
 
 export function removeTodo(todos: Todo[], index: number): void {
   todos.splice(index, 1);
