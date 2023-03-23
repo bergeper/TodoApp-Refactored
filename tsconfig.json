@@ -17,5 +17,5 @@
     "skipLibCheck": true,
     "strictNullChecks": true
   },
-  "include": ["src", ".eslintrc.cjs"]
+  "include": ["src", ".eslintrc.cjs", "vite.config.ts"]
 }

@@ -1,6 +1,6 @@
 import { getTodosFromLS } from '../helpers/localStorage';
 import { Todo } from '../models/todo';
-import { createTodoList } from './displayTodos';
+import { displayTodos } from './displayTodos';
 
 let todos: Todo[] = [];
 todos = getTodosFromLS();
@@ -22,6 +22,6 @@ export function createTodo(inputValue: string): void {
   } else {
     todos.push(newTodo);
     localStorage.setItem('Todos', JSON.stringify(todos));
-    createTodoList(todos);
+    displayTodos(todos);
   }
 }
