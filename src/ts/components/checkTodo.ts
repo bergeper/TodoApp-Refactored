@@ -1,19 +1,19 @@
 import type { Todo } from '../models/todo';
 
 export function checkTodoDone(
-  listItem: HTMLDivElement,
+  todoChecked: HTMLDivElement,
   checkbox: HTMLInputElement,
-  todoList: Todo[],
+  todos: Todo[],
   index: number
 ): void {
   if (checkbox.checked) {
-    todoList[index].completed = true;
-    listItem.classList.add('card__task--done');
-    console.log(todoList);
+    todos[index].completed = true;
+    todoChecked.classList.add('card__task--done');
+    console.log(todos);
   } else {
-    todoList[index].completed = false;
-    listItem.classList.remove('class', 'card__task--done');
-    console.log(todoList);
+    todos[index].completed = false;
+    todoChecked.classList.remove('class', 'card__task--done');
+    console.log(todos);
   }
-  localStorage.setItem('Todos', JSON.stringify(todoList));
+  localStorage.setItem('Todos', JSON.stringify(todos));
 }
