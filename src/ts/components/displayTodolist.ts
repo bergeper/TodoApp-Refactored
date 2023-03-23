@@ -3,55 +3,55 @@ import { checkTodoDone } from './checkTodo';
 import { removeTodo } from './removeTodo';
 import { sortTodos } from './sortTodolist';
 
-const todoListContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
-export function createTodoList(todoList: Todo[]): void {
+const todoContainer = document.getElementById('todoListDisplay') as HTMLDivElement;
+export function createTodoList(todos: Todo[]): void {
   const buttonSort: HTMLButtonElement = document.createElement('button');
   buttonSort.classList.add('sort__btn');
   buttonSort.innerHTML = 'Sort it up!';
 
-  todoListContainer.innerHTML = '';
+  todoContainer.innerHTML = '';
 
-  for (let i = 0; i < todoList.length; i++) {
-    const listItemContainer: HTMLDivElement = document.createElement('div');
-    listItemContainer.classList.add('card__task');
+  for (let i = 0; i < todos.length; i++) {
+    const taskContainer: HTMLDivElement = document.createElement('div');
+    taskContainer.classList.add('card__task');
 
-    const listItemTask: HTMLParagraphElement = document.createElement('p');
-    listItemTask.classList.add('card__task--name');
+    const task: HTMLParagraphElement = document.createElement('p');
+    task.classList.add('card__task--name');
 
-    const listItemRemove: HTMLSpanElement = document.createElement('span');
-    listItemRemove.classList.add('card__task--remove');
+    const taskRemove: HTMLSpanElement = document.createElement('span');
+    taskRemove.classList.add('card__task--remove');
 
-    const listItemChecked: HTMLInputElement = document.createElement('input');
-    listItemChecked.classList.add('card__task--check');
-    listItemChecked.type = 'checkbox';
-    listItemChecked.checked = todoList[i].completed;
+    const taskChecked: HTMLInputElement = document.createElement('input');
+    taskChecked.classList.add('card__task--check');
+    taskChecked.type = 'checkbox';
+    taskChecked.checked = todos[i].completed;
 
-    listItemChecked.addEventListener('change', () => {
-      checkTodoDone(listItemContainer, listItemChecked, todoList, i);
+    taskChecked.addEventListener('change', () => {
+      checkTodoDone(taskContainer, taskChecked, todos, i);
     });
 
-    listItemRemove.addEventListener('click', () => {
-      removeTodo(todoList, i);
+    taskRemove.addEventListener('click', () => {
+      removeTodo(todos, i);
     });
 
-    if (listItemChecked.checked) {
-      listItemContainer.classList.add('card__task--done');
+    if (taskChecked.checked) {
+      taskContainer.classList.add('card__task--done');
     } else {
-      listItemContainer.classList.remove('class', 'card__task--done');
+      taskContainer.classList.remove('class', 'card__task--done');
     }
 
-    listItemRemove.innerHTML = `<i class="bi bi-x-square-fill"></i>`;
-    listItemTask.innerText = todoList[i].task;
+    taskRemove.innerHTML = `<i class="bi bi-x-square-fill"></i>`;
+    task.innerText = todos[i].task;
 
-    listItemContainer.appendChild(listItemChecked);
-    listItemContainer.appendChild(listItemTask);
-    listItemContainer.appendChild(listItemRemove);
-    todoListContainer.appendChild(listItemContainer);
+    taskContainer.appendChild(taskChecked);
+    taskContainer.appendChild(task);
+    taskContainer.appendChild(taskRemove);
+    todoContainer.appendChild(taskContainer);
   }
 
   buttonSort.addEventListener('click', () => {
-    sortTodos(todoList);
+    sortTodos(todos);
   });
 
-  todoListContainer.appendChild(buttonSort);
+  todoContainer.appendChild(buttonSort);
 }
