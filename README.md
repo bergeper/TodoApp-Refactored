@@ -40,6 +40,8 @@ npm run dev
 
 ```ps1
 npm run build
+```
+```ps1
 npm run preview
 ```
 
